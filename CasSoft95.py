@@ -39,6 +39,11 @@ class CassSoft95(tk.Tk):
                                   relief="raised", width=20, command=self.abrir_simulador)
         simulador_btn.pack(pady=10)
 
+        # Botão para abrir o InforPC
+        inforpc_btn = tk.Button(self, text="Abrir InforPC", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
+                                relief="raised", width=20, command=self.abrir_inforpc)
+        inforpc_btn.pack(pady=10)
+
         sair_btn = tk.Button(self, text="Sair", bg=BUTTON_COLOR, fg=TEXT_COLOR, relief="raised", width=20, command=self.quit)
         sair_btn.pack(pady=30)
 
@@ -56,6 +61,11 @@ class CassSoft95(tk.Tk):
         # Caminho para o arquivo do Simulador de Física
         simulador_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\SimuladorDeFisica.py"
         subprocess.Popen(["python", simulador_path])  # Abre o Simulador de Física
+
+    def abrir_inforpc(self):
+        # Caminho para o arquivo do InforPC
+        inforpc_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\InforPC.py"
+        subprocess.Popen(["python", inforpc_path])  # Abre o InforPC
 
 def splash_screen():
     splash = tk.Toplevel()
