@@ -41,7 +41,7 @@ def on_orbit_click(event):
 #  velocidade dos planetas na distância da órbita
 def recalculate_speeds():
     for planet in planets:
-        # A velocidade é inversamente proporcional ao raio da órbita
+        # A velocidade eh inversa a orbita
         planet["speed"] = 0.5 / planet["orbit_radius"]
 
 #  arrastar a órbita
@@ -111,7 +111,7 @@ increase_button.pack(side="left", padx=5)
 decrease_button = tk.Button(control_frame, text="Diminuir Velocidade", command=decrease_speed)
 decrease_button.pack(side="left", padx=5)
 
-# teclas de seta para controlar  velocidade
+# controlar  velocidade
 root.bind("<Up>", increase_speed)  # aumenta a velocidade
 root.bind("<Down>", decrease_speed)  #  diminui a velocidade
 
