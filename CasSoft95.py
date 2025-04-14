@@ -2,11 +2,21 @@ import os  # Import necessário para manipulação de caminhos
 import tkinter as tk
 import time
 import subprocess
+import sys  # Necessário para verificar o interpretador Python
 
 # Cores estilo Windows 95
 BG_COLOR = "#C0C0C0"
 BUTTON_COLOR = "#E0E0E0"
 TEXT_COLOR = "#000000"
+
+def instalar_dependencias():
+    """Instala as dependências listadas no arquivo requirements.txt."""
+    requirements_path = os.path.join(os.path.dirname(__file__), "requirements.txt")
+    if os.path.exists(requirements_path):
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", requirements_path])
+        except subprocess.CalledProcessError:
+            print("Erro ao instalar dependências. Verifique o arquivo requirements.txt.")
 
 class CassSoft95(tk.Tk):
     def __init__(self):
@@ -85,6 +95,7 @@ def splash_screen():
     splash.after(2500, abrir_janela_principal)
 
 if __name__ == "__main__":
+    instalar_dependencias()  # Instala as dependências antes de iniciar o programa
     main_window = CassSoft95()
     main_window.withdraw()
 
