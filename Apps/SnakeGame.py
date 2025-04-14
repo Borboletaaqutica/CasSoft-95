@@ -9,9 +9,9 @@ class SnakeGame:
 
         # Configurações do jogo
         self.cell_size = 20
-        self.width = 30  # Aumentado para 30 células
-        self.height = 30  # Aumentado para 30 células
-        self.game_speed = 100  # Velocidade do jogo (ms)
+        self.width = 30  
+        self.height = 30 
+        self.game_speed = 100  # (Ms)
 
         # Cores
         self.bg_color = "#000000"
@@ -24,11 +24,11 @@ class SnakeGame:
         self.canvas.pack()
 
         # Inicialização do jogo
-        self.snake = [(15, 15)]  # Posição inicial da cobra
+        self.snake = [(15, 15)]  # Posição inicial da cobrona kkkkk
         self.food = self.spawn_food()
         self.direction = "Right"
         self.running = True
-        self.score = 0  # Contador de pontos
+        self.score = 0  # Contador
 
         # Controles
         self.window.bind("<Up>", lambda event: self.change_direction("Up"))
@@ -52,14 +52,14 @@ class SnakeGame:
             self.direction = new_direction
 
     def restart_game(self):
-        self.running = False  # Para a execução atual do jogo
-        self.window.after_cancel(self.update_id)  # Cancela o evento pendente do método update
-        self.snake = [(15, 15)]  # Reinicia a posição inicial da cobra
+        self.running = False
+        self.window.after_cancel(self.update_id)
+        self.snake = [(15, 15)]  
         self.food = self.spawn_food()
         self.direction = "Right"
         self.running = True
         self.score = 0
-        self.game_speed = 100  # Reinicia a velocidade do jogo para o valor inicial
+        self.game_speed = 100 
         self.update()
 
     def move_snake(self):
