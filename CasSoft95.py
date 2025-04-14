@@ -35,7 +35,7 @@ class CassSoft95(tk.Tk):
         snake_btn.pack(pady=10)
 
         # Botão para abrir o Simulador de Física
-        simulador_btn = tk.Button(self, text="Abrir Simulador de Física", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
+        simulador_btn = tk.Button(self, text="Solaris!", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
                                   relief="raised", width=20, command=self.abrir_simulador)
         simulador_btn.pack(pady=10)
 
@@ -59,8 +59,8 @@ class CassSoft95(tk.Tk):
 
     def abrir_simulador(self):
         # Caminho para o arquivo do Simulador de Física
-        simulador_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\SimuladorDeFisica.py"
-        subprocess.Popen(["python", simulador_path])  # Abre o Simulador de Física
+        simulador_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\Solaris.py"
+        subprocess.Popen(["python", simulador_path])  # Abre o Solaris
 
     def abrir_inforpc(self):
         # Caminho para o arquivo do InforPC
