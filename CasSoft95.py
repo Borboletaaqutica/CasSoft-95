@@ -1,10 +1,10 @@
-import os  # Import necessário para manipulação de caminhos
+import os
 import tkinter as tk
 import time
 import subprocess
-import sys  # Necessário para verificar o interpretador Python
+import sys 
 
-# Cores estilo Windows 95
+# Cores Windows 95
 BG_COLOR = "#C0C0C0"
 BUTTON_COLOR = "#E0E0E0"
 TEXT_COLOR = "#000000"
@@ -45,7 +45,7 @@ class CassSoft95(tk.Tk):
                               relief="raised", width=20, command=self.abrir_snakegame)
         snake_btn.pack(pady=10)
 
-        # Botão para abrir o Simulador de Física
+        # Botão para abrir Solaris
         simulador_btn = tk.Button(self, text="Solaris!", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
                                   relief="raised", width=20, command=self.abrir_simulador)
         simulador_btn.pack(pady=10)
@@ -59,22 +59,22 @@ class CassSoft95(tk.Tk):
         sair_btn.pack(pady=30)
 
     def abrir_calculadora(self):
-        # Caminho relativo para o arquivo da calculadora
+        # Caminho relativo da calculadora
         calculadora_path = os.path.join(os.path.dirname(__file__), "Apps", "Calculadora.py")
         subprocess.Popen(["python", calculadora_path])  # Abre a calculadora
 
     def abrir_snakegame(self):
-        # Caminho relativo para o arquivo do SnakeGame
+        # Caminho relativo do SnakeGame
         snakegame_path = os.path.join(os.path.dirname(__file__), "Apps", "SnakeGame.py")
         subprocess.Popen(["python", snakegame_path])  # Abre o SnakeGame
 
     def abrir_simulador(self):
-        # Caminho relativo para o arquivo do Simulador de Física
+        # Caminho relativo do Solaris
         simulador_path = os.path.join(os.path.dirname(__file__), "Apps", "Solaris.py")
         subprocess.Popen(["python", simulador_path])  # Abre o Solaris
 
     def abrir_inforpc(self):
-        # Caminho relativo para o arquivo do InforPC
+        # Caminho relativo do InforPC
         inforpc_path = os.path.join(os.path.dirname(__file__), "Apps", "InforPC.py")
         subprocess.Popen(["python", inforpc_path])  # Abre o InforPC
 
@@ -95,7 +95,7 @@ def splash_screen():
     splash.after(2500, abrir_janela_principal)
 
 if __name__ == "__main__":
-    instalar_dependencias()  # Instala as dependências antes de iniciar o programa
+    instalar_dependencias()  # Instala as dependebciaus kkkkk < nao sabe escrever
     main_window = CassSoft95()
     main_window.withdraw()
 
