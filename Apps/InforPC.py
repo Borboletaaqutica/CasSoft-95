@@ -69,7 +69,7 @@ def get_user_info():
 # --- INTERFACE RETRÔ ---
 
 root = tk.Tk()
-root.title("InforPC 95™")
+root.title("InforPC™")
 root.geometry("700x500")
 root.configure(bg="lightgray")
 

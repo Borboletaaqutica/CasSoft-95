@@ -3,11 +3,11 @@ import tkinter as tk
 import time
 import subprocess
 import sys 
-from tkinter import PhotoImage  # Import necessário para carregar imagens
+from tkinter import PhotoImage
 
 # Cores Windows 95
 BG_COLOR = "#C0C0C0"
-BUTTON_COLOR = "#E0E0E0"
+BUTTON_COLOR = "#808080"
 TEXT_COLOR = "#000000"
 
 def instalar_dependencias():
@@ -26,7 +26,7 @@ class CassSoft95(tk.Tk):
         self.geometry("800x600")
         self.configure(bg=BG_COLOR)
         self.resizable(False, False)
-        self.dark_mode = False  # Estado inicial do modo escuro
+        self.dark_mode = False
         self.create_widgets()
 
     def toggle_dark_mode(self):
@@ -141,7 +141,7 @@ def splash_screen():
     splash.geometry("300x150+500+300")
     splash.configure(bg=BG_COLOR)
 
-    label = tk.Label(splash, text="Carregando CassSoft 95™...", font=("Fixedsys", 14), bg=BG_COLOR, fg=TEXT_COLOR)
+    label = tk.Label(splash, text="Carregando...", font=("Fixedsys", 14), bg=BG_COLOR, fg=TEXT_COLOR)
     label.pack(expand=True)
 
     # Espera 2.5s
