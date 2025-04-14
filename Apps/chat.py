@@ -16,23 +16,10 @@ FIREBASE_URL = config.get("FIREBASE_URL")
 if not FIREBASE_URL:
     raise ValueError("A URL do Firebase não foi encontrada no arquivo de configuração.")
 
-# Lista para armazenar os nomes de usuários ativos
-usuarios_ativos = set()
-
-def verificar_usuario():
+def enviar_mensagem(event=None):
     usuario = entrada_usuario.get().strip()
     if not usuario:
         messagebox.showerror("Erro", "O nome de usuário não pode estar vazio.")
-        return False
-    if usuario in usuarios_ativos:
-        messagebox.showerror("Erro", f"O nome de usuário '{usuario}' já está em uso.")
-        return False
-    usuarios_ativos.add(usuario)
-    return True
-
-def enviar_mensagem(event=None):
-    usuario = entrada_usuario.get().strip()
-    if not verificar_usuario():
         return
     texto = entrada_texto.get()
     if not texto.strip():
@@ -79,12 +66,6 @@ def alternar_modo_escuro():
         label_usuario.configure(style="TLabel")
         botao_enviar.configure(style="TButton")
 
-# Modificar o botão de entrada de usuário para verificar o nome
-def configurar_usuario():
-    if verificar_usuario():
-        entrada_usuario.configure(state='disabled')
-        botao_configurar_usuario.configure(state='disabled')
-
 # Interface CassSoft95
 janela = tk.Tk()
 janela.title("CassChat - CassSoft95™")
@@ -113,10 +94,6 @@ label_usuario.pack(side=tk.LEFT, padx=5)
 entrada_usuario = ttk.Entry(frame_usuario)
 entrada_usuario.insert(0, "Cass")
 entrada_usuario.pack(side=tk.LEFT, fill=tk.X, expand=True)
-
-# Adicionar botão para configurar o nome de usuário
-botao_configurar_usuario = ttk.Button(frame_usuario, text="Configurar Usuário", command=configurar_usuario)
-botao_configurar_usuario.pack(side=tk.RIGHT, padx=5)
 
 # Área de chat
 chat_display = scrolledtext.ScrolledText(janela, state='disabled', font=('MS Sans Serif', 10))
