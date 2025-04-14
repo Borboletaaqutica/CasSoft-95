@@ -55,6 +55,11 @@ class CassSoft95(tk.Tk):
                                 relief="raised", width=20, command=self.abrir_inforpc)
         inforpc_btn.pack(pady=10)
 
+        # Botão para abrir o Chat
+        chat_btn = tk.Button(self, text="Abrir Chat", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
+                             relief="raised", width=20, command=self.abrir_chat)
+        chat_btn.pack(pady=10)
+
         sair_btn = tk.Button(self, text="Sair", bg=BUTTON_COLOR, fg=TEXT_COLOR, relief="raised", width=20, command=self.quit)
         sair_btn.pack(pady=30)
 
@@ -77,6 +82,11 @@ class CassSoft95(tk.Tk):
         # Caminho relativo para o arquivo do InforPC
         inforpc_path = os.path.join(os.path.dirname(__file__), "Apps", "InforPC.py")
         subprocess.Popen(["python", inforpc_path])  # Abre o InforPC
+
+    def abrir_chat(self):
+        # Caminho relativo para o arquivo do Chat
+        chat_path = os.path.join(os.path.dirname(__file__), "Apps", "Chat.py")
+        subprocess.Popen(["python", chat_path])  # Abre o Chat
 
 def splash_screen():
     splash = tk.Toplevel()
