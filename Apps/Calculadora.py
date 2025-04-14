@@ -63,7 +63,7 @@ class Calculator95:
                 col = 0
                 row += 1
                 
-        # Clear button
+        # BOTAO C PRA LIMPAR
         tk.Button(self.window,
                  text="C",
                  command=self.clear,
