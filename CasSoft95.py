@@ -1,6 +1,7 @@
+import os  # Import necessário para manipulação de caminhos
 import tkinter as tk
 import time
-import subprocess  # Import pra abrir outras aplicações 
+import subprocess
 
 # Cores estilo Windows 95
 BG_COLOR = "#C0C0C0"
@@ -48,23 +49,23 @@ class CassSoft95(tk.Tk):
         sair_btn.pack(pady=30)
 
     def abrir_calculadora(self):
-        # Caminho para o arquivo da calculadora
-        calculadora_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\Calculadora.py"
+        # Caminho relativo para o arquivo da calculadora
+        calculadora_path = os.path.join(os.path.dirname(__file__), "Apps", "Calculadora.py")
         subprocess.Popen(["python", calculadora_path])  # Abre a calculadora
 
     def abrir_snakegame(self):
-        # Caminho para o arquivo do SnakeGame
-        snakegame_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\SnakeGame.py"
+        # Caminho relativo para o arquivo do SnakeGame
+        snakegame_path = os.path.join(os.path.dirname(__file__), "Apps", "SnakeGame.py")
         subprocess.Popen(["python", snakegame_path])  # Abre o SnakeGame
 
     def abrir_simulador(self):
-        # Caminho para o arquivo do Simulador de Física
-        simulador_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\Solaris.py"
+        # Caminho relativo para o arquivo do Simulador de Física
+        simulador_path = os.path.join(os.path.dirname(__file__), "Apps", "Solaris.py")
         subprocess.Popen(["python", simulador_path])  # Abre o Solaris
 
     def abrir_inforpc(self):
-        # Caminho para o arquivo do InforPC
-        inforpc_path = r"c:\Users\Cass\Documents\CasSoft\CasSoft95\Apps\InforPC.py"
+        # Caminho relativo para o arquivo do InforPC
+        inforpc_path = os.path.join(os.path.dirname(__file__), "Apps", "InforPC.py")
         subprocess.Popen(["python", inforpc_path])  # Abre o InforPC
 
 def splash_screen():
