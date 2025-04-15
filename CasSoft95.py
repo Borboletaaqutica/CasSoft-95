@@ -27,6 +27,16 @@ class CassSoft95(tk.Tk):
         self.configure(bg=BG_COLOR)
         self.resizable(False, False)
         self.dark_mode = False
+
+        # Centralizar a janela na tela
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        window_width = 800
+        window_height = 600
+        position_x = (screen_width - window_width) // 2
+        position_y = (screen_height - window_height) // 2
+        self.geometry(f"{window_width}x{window_height}+{position_x}+{position_y}")
+
         self.create_widgets()
 
     def toggle_dark_mode(self):
@@ -56,23 +66,25 @@ class CassSoft95(tk.Tk):
                 widget.configure(bg=bg_color)
 
     def create_widgets(self):
+        # Centralizar o título
         title = tk.Label(self, text="CassSoft 95™", font=("Fixedsys", 18), bg=BG_COLOR, fg=TEXT_COLOR)
         title.pack(pady=20)
 
+        # Centralizar o subtítulo
         label = tk.Label(self, text="Bem vindo!", font=("Fixedsys", 10),
                          bg=BG_COLOR, fg=TEXT_COLOR)
         label.pack(pady=5)
 
-        # Frame para organizar os botões
+        # Frame para organizar os botões, centralizado
         button_frame = tk.Frame(self, bg=BG_COLOR)
         button_frame.pack(pady=20)
 
-        # Botões organizados em uma grade
+        # Botões organizados em uma grade, centralizados
         calc_btn = tk.Button(button_frame, text="Calculadora", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
                              relief="raised", width=20, height=3, font=("Fixedsys", 10), command=self.abrir_calculadora)
         calc_btn.grid(row=0, column=0, padx=10, pady=10)
 
-        snake_btn = tk.Button(button_frame, text="Jogo da Cobrinha :3", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
+        snake_btn = tk.Button(button_frame, text="Snakerio", bg=BUTTON_COLOR, fg=TEXT_COLOR, 
                               relief="raised", width=20, height=3, font=("Fixedsys", 10), command=self.abrir_snakegame)
         snake_btn.grid(row=0, column=1, padx=10, pady=10)
 
@@ -92,23 +104,23 @@ class CassSoft95(tk.Tk):
                              relief="raised", width=20, height=3, font=("Fixedsys", 10), command=self.quit)
         sair_btn.grid(row=1, column=2, padx=10, pady=10)
 
-        # Aviso abaixo do botão do Chat
+        # Aviso abaixo do botão do Chat, centralizado
         chat_warning = tk.Label(self, text="EM FASE TESTES, NAO ESPERAR MUITO", font=("Fixedsys", 8),
                                 bg=BG_COLOR, fg=TEXT_COLOR)
         chat_warning.pack(pady=5)
 
-        # Botão para alternar modo escuro
+        # Botão para alternar modo escuro, no canto inferior direito
         dark_mode_btn = tk.Button(self, text="🌙", bg=BUTTON_COLOR, fg=TEXT_COLOR,
                                   relief="flat", width=3, height=1, font=("Fixedsys", 8),
                                   command=self.toggle_dark_mode)
-        dark_mode_btn.place(relx=1.0, rely=1.0, anchor="se", x=-10, y=-10)  # Posiciona no canto inferior direito
+        dark_mode_btn.place(relx=1.0, rely=1.0, anchor="se", x=-10, y=-10)
 
         # Exibir imagem no canto inferior direito
         image_path = os.path.join(os.path.dirname(__file__), "Assets", "Catnerd.png")
         if os.path.exists(image_path):
             self.image = PhotoImage(file=image_path)  # Carrega a imagem
             image_label = tk.Label(self, image=self.image, bg=BG_COLOR)
-            image_label.place(relx=1.0, rely=1.0, anchor="se", x=-40, y=-40)  # Ajusta posição para não sobrepor o botão
+            image_label.place(relx=1.0, rely=1.0, anchor="se", x=-40, y=-40)
 
     def abrir_calculadora(self):
         # Caminho relativo da calculadora
