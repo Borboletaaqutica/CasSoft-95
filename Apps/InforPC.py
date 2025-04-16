@@ -8,6 +8,16 @@ from datetime import datetime, timedelta
 import getpass
 import ctypes
 
+# --- CORES E ESTILO ---
+BG_COLOR = "#2C2C2C"
+FG_COLOR = "#F0F0F0"
+ACCENT_COLOR = "#4682B4"
+TITLE_BG = "#1A1A1A"
+TITLE_FG = "#00FFFF"
+FONT = ("Consolas", 10)
+FONT_BOLD = ("Consolas", 10, "bold")
+
+
 def get_system_info():
     boot_time = datetime.fromtimestamp(psutil.boot_time())
     uptime = datetime.now() - boot_time
@@ -21,6 +31,7 @@ def get_system_info():
         "Tempo de Atividade": uptime_str,
     }
 
+
 def get_hardware_info():
     return {
         "Processador": platform.processor(),
@@ -29,6 +40,7 @@ def get_hardware_info():
         "RAM Total": f"{round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB",
         "RAM em Uso": f"{psutil.virtual_memory().percent}%",
     }
+
 
 def get_disk_info():
     disk = psutil.disk_usage('/')
@@ -39,6 +51,7 @@ def get_disk_info():
         "Uso de Disco": f"{disk.percent}%",
         "Sistema de Arquivos": os.name
     }
+
 
 def get_network_info():
     hostname = socket.gethostname()
@@ -53,11 +66,12 @@ def get_network_info():
         "Interfaces Ativas": active,
     }
 
+
 def get_user_info():
     is_admin = "Indisponível"
-    if os.name == "posix":  # Sistemas Unix/Linux
+    if os.name == "posix":
         is_admin = "Sim" if os.geteuid() == 0 else "Não"
-    elif os.name == "nt":  # Sistemas Windows
+    elif os.name == "nt":
         is_admin = "Sim" if ctypes.windll.shell32.IsUserAnAdmin() != 0 else "Não"
 
     return {
@@ -66,49 +80,60 @@ def get_user_info():
         "Permissões de Root/Admin": is_admin,
     }
 
-# --- INTERFACE RETRÔ ---
+# --- INTERFACE MODERNIZADA COM RETRÔ ---
 
 root = tk.Tk()
 root.title("InforPC™")
 root.geometry("700x500")
-root.configure(bg="lightgray")
+root.configure(bg=BG_COLOR)
+root.resizable(False, False)
 
-# Título 
+# Título com estilo
 title = tk.Label(
-    root, 
-    text="InforPC 95™", 
-    font=("MS Sans Serif", 16, "bold"), 
-    bg="navy", 
-    fg="white", 
-    pady=10
+    root,
+    text="Infor-PC™",
+    font=("Fixedsys", 18, "bold"),
+    bg=TITLE_BG,
+    fg=TITLE_FG,
+    pady=12
 )
 title.pack(fill=tk.X)
+
+# Notebook com estilo moderno
+style = ttk.Style()
+style.theme_use("default")
+style.configure("TNotebook", background=BG_COLOR, borderwidth=0)
+style.configure("TNotebook.Tab", background=ACCENT_COLOR, foreground="white", padding=8)
+style.map("TNotebook.Tab", background=[("selected", "#1E90FF")])
 
 notebook = ttk.Notebook(root)
 notebook.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
 
-# Função aba com dados
+# Função para preencher abas
+
 def preencher_aba(frame, dados):
     for key, value in dados.items():
-        row = tk.Frame(frame, bg="lightgray", pady=5)
+        row = tk.Frame(frame, bg=BG_COLOR, pady=5)
         row.pack(anchor="w", fill=tk.X, padx=10)
         tk.Label(
-            row, 
-            text=key + ":", 
-            font=("MS Sans Serif", 10, "bold"), 
-            bg="lightgray", 
-            width=20, 
+            row,
+            text=key + ":",
+            font=FONT_BOLD,
+            bg=BG_COLOR,
+            fg=ACCENT_COLOR,
+            width=24,
             anchor="w"
         ).pack(side="left")
         tk.Label(
-            row, 
-            text=str(value), 
-            font=("MS Sans Serif", 10), 
-            bg="lightgray", 
+            row,
+            text=str(value),
+            font=FONT,
+            bg=BG_COLOR,
+            fg=FG_COLOR,
             anchor="w"
         ).pack(side="left", fill=tk.X, expand=True)
 
-# Criar abas com layout
+# Criar abas com dados
 abas = {
     "Sistema": get_system_info(),
     "Hardware": get_hardware_info(),
@@ -118,7 +143,7 @@ abas = {
 }
 
 for nome, dados in abas.items():
-    frame = tk.Frame(notebook, bg="lightgray")
+    frame = tk.Frame(notebook, bg=BG_COLOR)
     notebook.add(frame, text=nome)
     preencher_aba(frame, dados)
 
