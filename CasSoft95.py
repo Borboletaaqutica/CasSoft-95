@@ -1,12 +1,12 @@
 import os
 import tkinter as tk
-import tkinter.ttk as ttk  # Import necessário para usar o Notebook (abas)
+import tkinter.ttk as ttk 
 import time
 import subprocess
 import sys 
 import threading
 import requests
-import json  # Import necessário para carregar o config.json
+import json 
 from tkinter import PhotoImage, font as tkFont, messagebox
 from tkinter import scrolledtext
 from datetime import datetime
@@ -28,6 +28,7 @@ def instalar_dependencias():
             subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", requirements_path])
         except subprocess.CalledProcessError:
             print("Erro ao instalar dependências. Verifique o arquivo requirements.txt.")
+
 
 
 class CassSoft95(tk.Tk):
@@ -91,7 +92,7 @@ class CassSoft95(tk.Tk):
                         highlightbackground=FRAME_BORDER_COLOR,
                         highlightthickness=1,
                         command=command,
-                        takefocus=False)  # Desativa o foco visual
+                        takefocus=False)
         self.apply_hover_effects(btn)
         return btn
 
@@ -174,9 +175,9 @@ class CassSoft95(tk.Tk):
         def on_tab_change(event):
             selected_tab = notebook.tab(notebook.select(), "text")
             if selected_tab == "Chat":
-                self.image_label.place_forget()  # Remove o gato da tela
+                self.image_label.place_forget()
             else:
-                self.image_label.place(relx=1.0, rely=1.0, anchor="se", x=-40, y=-40)  # Recoloca o gato
+                self.image_label.place(relx=1.0, rely=1.0, anchor="se", x=-40, y=-40)
 
         # Vincular o evento de troca de abas
         notebook.bind("<<NotebookTabChanged>>", on_tab_change)
@@ -257,7 +258,7 @@ class CassSoft95(tk.Tk):
                             self.chat_display.insert(tk.END, f"[{msg['usuario']}] {msg['texto']}\n")
 
                 # Verificar se o scroll está no final antes de rolar automaticamente
-                if scroll_position[1] == 1.0:  # Se o scroll estiver no final
+                if scroll_position[1] == 1.0:
                     self.chat_display.see(tk.END)
 
                 self.chat_display.configure(state='disabled')
